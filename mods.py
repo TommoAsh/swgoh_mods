@@ -144,9 +144,9 @@ class Mod(object):
             return weight * value / 4000
         if stat.lower() == 'protection%':
             return weight * value / 10
-        if stat.lower() == 'critical chance':
+        if stat.lower().rstrip('%') == 'critical chance':
             return weight * value / 10
-        if stat.lower() == 'potency':
+        if stat.lower().rstrip('%') == 'potency':
             return weight * value / 10
         if stat.lower().rstrip('%') == 'tenacity':
             return weight * value / 225
@@ -270,7 +270,10 @@ class Mods(object):
 
     def find_best_rating_mods(self, character, modshape):
         mods = []
-        for modset in set(character.modsets):
+        sets = character.modsets
+        if not sets:
+            sets = ['doesnt_exist']
+        for modset in set(sets):
             possible_mods = self.filter_mods(pips=character.minpips, level=character.minlevel,
                 modsets=[modset], modshape=modshape)
             if possible_mods:

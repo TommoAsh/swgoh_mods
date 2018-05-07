@@ -21,7 +21,7 @@ There are examples called `example_extracted_mods.csv`, `example_character_deman
 # Algorithm:
 For each shape, find a list of mods with any of the requested sets, minimum pips and level (if not possible, make best effort).  
 Then for each mod give it a rating.  
-If it has the first secondary at max value, it gets +100 (scaling). If it has the first primary, it gets 15 * number of pips.  
-If it has the second secondary at max value, it gets +50 (scaling). If it has the second primary, it gets 7.5 * number of pips.   
-If it has the third secondary at max value, it gets +20 (scaling). If it has the third primary, it gets 3 * number of pips.  
+If it has the first secondary at max value, it gets +100 (scaling). If it has the first primary, it gets 10 * number of pips.  
+If it has the second secondary at max value, it gets +50 (scaling). If it has the second primary, it gets 5 * number of pips.   
+If it has the third secondary at max value, it gets +20 (scaling). If it has the third primary, it gets 2 * number of pips.  
 The program then optimises the sum rating of the mods, whilst keeping target modsets if at all possible.  

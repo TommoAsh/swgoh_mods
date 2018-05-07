@@ -103,11 +103,11 @@ class Mod(object):
         rating = 0
         for idx, target_primary in enumerate(character.primaries):
             if idx == 0:
-                weight = 17
+                weight = 10
             elif idx == 1:
-                weight = 7.5
+                weight = 5
             elif idx == 2:
-                weight = 3
+                weight = 2
             if self.primary.stat.rstrip('%').lower() == target_primary.rstrip('%').lower():
                 rating += weight * int(self.pips)   
         for idx, target_secondary in enumerate(character.secondaries):

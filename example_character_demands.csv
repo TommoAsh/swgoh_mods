@@ -1,0 +1,3 @@
+#name,#minpip,#minlevel,#modset1,#modset2,#modset3,#primary1,#primary2,#primary3,#secondary1,#secondary2,#secondary3
+CLS,0,0,speed,speed,crit chance,speed,health,protection,speed,tenacity,offense
+Bandy Legs,5,0,crit damage,tenacity,defense,protection,,,protection,,

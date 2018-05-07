@@ -92,3 +92,17 @@ class Mods(object):
                     secondaries.append(secondary)
                 self.mods.append(Mod(current_toon, pips, level, modset, modshape, primary,
                                      secondaries))
+
+    def filter_mods(self, pips=None, level=None, modset=None, modshape=None, primary=None):
+        mods = self.mods
+        if pips:
+            mods = [mod for mod in mods if int(mod.pips) >= pips]
+        if level:
+            mods = [mod for mod in mods if int(mod.level) >= level]
+        if modset:
+            mods = [mod for mod in mods if mod.modset.lower() == modset.lower()]
+        if modshape:
+            mods = [mod for mod in mods if mod.modshape.lower() == modshape.lower()]
+        if primary:
+            mods = [mod for mod in mods if mod.primary.stat.lower().rstrip('%') == primary.lower()]
+        return mods

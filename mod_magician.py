@@ -25,6 +25,8 @@ def main():
     mods = Mods()
     mods.load_mods_from_file(opts.infile, opts.delimeter)
     mods.write_mods_to_file(opts.outfile, opts.delimeter)
+    for mod in mods.filter_mods(level=15, pips=5, modshape='arrow', primary='speed'):
+        print(mod.to_xsv())
 
 
 if __name__ == '__main__':

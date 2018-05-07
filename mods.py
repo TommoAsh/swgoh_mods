@@ -26,6 +26,7 @@ class Mod(object):
         self.pips = pips
         self.level = level
         self.modset = modset
+        self.modshape = modshape
         if modshape.lower() == "transmitter":
             self.modshape = "square"
         if modshape.lower() == "processor":
@@ -72,3 +73,22 @@ class Mods(object):
             ouf.write(Mod.header_xsv(delimeter) + "\n")
             for mod in self.mods:
                 ouf.write(mod.to_xsv(delimeter) + "\n")
+
+    def load_mods_from_file(self, file_path, delimeter):
+        with open(file_path) as inf:
+            header = inf.readline()
+            for line in inf:
+                entries = line.strip().split(delimeter)
+                current_toon = entries[0]
+                new_toon = entries[1]
+                pips = entries[2]
+                level = entries[3]
+                modset = entries[4]
+                modshape = entries[5]
+                primary = ModStat(entries[6], entries[7])
+                secondaries = []
+                for i in range(8, len(entries), 2):
+                    secondary = ModStat(entries[i], entries[i+1])
+                    secondaries.append(secondary)
+                self.mods.append(Mod(current_toon, pips, level, modset, modshape, primary,
+                                     secondaries))

@@ -1,4 +1,4 @@
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 
 
 ModStat = namedtuple('ModStat', 'stat value')
@@ -210,17 +210,40 @@ class Mods(object):
         Sets new_toon for the character's optimised mods
         """
         arrow_mods = self.find_best_rating_mods(character, 'arrow')
+        triangle_mods = self.find_best_rating_mods(character, 'triangle')
+        cross_mods = self.find_best_rating_mods(character, 'cross')
         square_mods = self.find_best_rating_mods(character, 'square')
         diamond_mods = self.find_best_rating_mods(character, 'diamond')
         circle_mods = self.find_best_rating_mods(character, 'circle')
-        triangle_mods = self.find_best_rating_mods(character, 'triangle')
-        cross_mods = self.find_best_rating_mods(character, 'cross')
         mods = self.pick_optimal_combination(character, arrow_mods, square_mods, diamond_mods,
                                  circle_mods, triangle_mods, cross_mods) 
-        print("New mods for {}".format(character.name))
-        for mod in mods:
-            print(mod.to_xsv())
+        self.give_mod_summary(mods, character)
         self.update_new_toon(mods, character)
+
+    def give_mod_summary(self, mods, character):
+        print("==========\nNew mods for '{}'".format(character.name.upper()))
+        modsets = defaultdict(int)
+        for mod in mods:
+            #print(mod.to_xsv())
+            modsets[mod.modset] += 1
+        mlist = []
+        for mset in modsets:
+            mlist.append("{}: {}".format(mset, modsets[mset]))
+        print("MODSETS: " + ", ".join(mlist))
+        mlist = []
+        for mod in [mods[i] for i in [0,3,4,5]]:
+            mlist.append("({}) {}: {}".format(mod.modshape, mod.primary.stat, mod.primary.value))
+        print("PRIMARIES: " + ", ".join(mlist))
+        secondaries = defaultdict(float)
+        for mod in mods:
+            for secondary in mod.secondaries:
+                if secondary.stat.lower().rstrip('%') in character.secondaries:
+                    secondaries[secondary.stat] += secondary.value
+        slist = []
+        for sec in secondaries:
+            slist.append("{}: {}".format(sec, secondaries[sec]))
+        print("SECONDARIES: " + ", ".join(slist))
+
 
     def pick_optimal_combination(self, character, arrow_mods, square_mods, diamond_mods,
                                  circle_mods, triangle_mods, cross_mods):
@@ -271,8 +294,7 @@ class Mods(object):
     def find_best_rating_mods(self, character, modshape):
         mods = []
         sets = character.modsets
-        if not sets:
-            sets = ['doesnt_exist']
+        sets.append('doesnt_exist')
         for modset in set(sets):
             possible_mods = self.filter_mods(pips=character.minpips, level=character.minlevel,
                 modsets=[modset], modshape=modshape)

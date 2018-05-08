@@ -18,6 +18,8 @@ def parse_args():
                         help="path to store mods and suggested new toons in")
     parser.add_argument('-d', '--delimeter', type=str, default=',',
                         help="delimeter to separate outputs by")
+    parser.add_argument('-s', '--secondary', type=str, default=',',
+                        help="secondary to report summary based on")
     parsed = parser.parse_args()
     return parsed
 
@@ -47,6 +49,7 @@ def main():
     for char in chars:
         mods.assign_mods(char)
     mods.write_mods_to_file(opts.modsout, opts.delimeter)
+    mods.print_mod_summary(opts.secondary)
 
 
 if __name__ == '__main__':

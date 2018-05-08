@@ -187,20 +187,20 @@ class Mods(object):
 
     def filter_mods(self, pips=None, level=None, modsets=[], modshape=None):
         mods = [mod for mod in self.mods if not mod.new_toon]
-        if pips:
-            new_mods = [mod for mod in mods if int(mod.pips) >= pips]
-            if new_mods:
-                mods = new_mods
-        if level:
-            new_mods = [mod for mod in mods if int(mod.level) >= level]
+        if modshape:
+            new_mods = [mod for mod in mods if mod.modshape.lower() == modshape.lower()]
             if new_mods:
                 mods = new_mods
         if modsets:
             new_mods = [mod for mod in mods if mod.modset.strip('%').lower() in modsets]
             if new_mods:
                 mods = new_mods
-        if modshape:
-            new_mods = [mod for mod in mods if mod.modshape.lower() == modshape.lower()]
+        if pips:
+            new_mods = [mod for mod in mods if int(mod.pips) >= pips]
+            if new_mods:
+                mods = new_mods
+        if level:
+            new_mods = [mod for mod in mods if int(mod.level) >= level]
             if new_mods:
                 mods = new_mods
         return mods
@@ -302,3 +302,6 @@ class Mods(object):
                 best = sorted(possible_mods, key=lambda obj: obj.rating(character))[-1]
                 mods.append(best)
         return mods
+
+    def print_mod_summary(self, target_secondary):
+        print("==========\n==========\nRemaining mod summary:")

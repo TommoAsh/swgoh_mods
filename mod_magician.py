@@ -18,7 +18,7 @@ def parse_args():
                         help="path to store mods and suggested new toons in")
     parser.add_argument('-d', '--delimeter', type=str, default=',',
                         help="delimeter to separate outputs by")
-    parser.add_argument('-s', '--secondary', type=str, default=',',
+    parser.add_argument('-s', '--secondary', type=str, default='speed',
                         help="secondary to report summary based on")
     parsed = parser.parse_args()
     return parsed

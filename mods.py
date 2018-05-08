@@ -16,6 +16,15 @@ def modstat_to_str_list(modstat):
 
 class CharReqs(object):
     def __init__(self, name, modsets, primaries, secondaries, minpips, minlevel):
+        """
+        Args
+            name (str)
+            modsets (list)
+            primaries (list)
+            secondaries (list)
+            minpips (int)
+            minlevel (int)
+        """
         self.name = name
         for modset in modsets:
             if modset.lower().strip().rstrip('%') not in AllowedModsets:
@@ -189,8 +198,7 @@ class Mods(object):
         mods = [mod for mod in self.mods if not mod.new_toon]
         if modshape:
             new_mods = [mod for mod in mods if mod.modshape.lower() == modshape.lower()]
-            if new_mods:
-                mods = new_mods
+            mods = new_mods
         if modsets:
             new_mods = [mod for mod in mods if mod.modset.strip('%').lower() in modsets]
             if new_mods:
@@ -229,11 +237,11 @@ class Mods(object):
         mlist = []
         for mset in modsets:
             mlist.append("{}: {}".format(mset, modsets[mset]))
-        print("MODSETS: " + ", ".join(mlist))
+        print("MODSETS: " + ",\t".join(mlist))
         mlist = []
         for mod in [mods[i] for i in [0,3,4,5]]:
             mlist.append("({}) {}: {}".format(mod.modshape, mod.primary.stat, mod.primary.value))
-        print("PRIMARIES: " + ", ".join(mlist))
+        print("PRIMARIES: " + ",\t".join(mlist))
         secondaries = defaultdict(float)
         for mod in mods:
             for secondary in mod.secondaries:
@@ -242,7 +250,7 @@ class Mods(object):
         slist = []
         for sec in secondaries:
             slist.append("{}: {}".format(sec, secondaries[sec]))
-        print("SECONDARIES: " + ", ".join(slist))
+        print("SECONDARIES: " + ",\t".join(slist))
 
 
     def pick_optimal_combination(self, character, arrow_mods, square_mods, diamond_mods,
@@ -305,3 +313,17 @@ class Mods(object):
 
     def print_mod_summary(self, target_secondary):
         print("==========\n==========\nRemaining mod summary:")
+        for modset in ['Any Set'] + AllowedModsets:
+            outputs = []
+            total_mods = len(self.filter_mods(modsets=[modset]))
+            outputs.append("{} {} mods".format(total_mods, modset))
+            for shape in ['square', 'arrow', 'diamond', 'triangle', 'circle', 'cross']:
+                mods = self.filter_mods(modsets=[modset], modshape=shape)
+                number = len(mods)
+                best = 0
+                for mod in mods:
+                    for secondary in mod.secondaries:
+                        if secondary.stat.lower() == target_secondary.lower() and secondary.value > best:
+                            best = secondary.value
+                outputs.append("{} {}s, max {}".format(number, shape, best))
+            print(",\t".join(outputs))

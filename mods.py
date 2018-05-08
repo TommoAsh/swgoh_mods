@@ -322,6 +322,8 @@ class Mods(object):
                 number = len(mods)
                 best = 0
                 for mod in mods:
+                    if mod.primary.stat.lower() == target_secondary.lower() and mod.primary.value > best:
+                        best = mod.primary.value
                     for secondary in mod.secondaries:
                         if secondary.stat.lower() == target_secondary.lower() and secondary.value > best:
                             best = secondary.value

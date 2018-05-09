@@ -1,3 +1,27 @@
 #name,#minpip,#minlevel,#modset1,#modset2,#modset3,#primary1,#primary2,#primary3,#secondary1,#secondary2,#secondary3
-CLS,0,0,speed,speed,crit chance,speed,health,protection,speed,tenacity,offense
-Bandy Legs,5,0,crit damage,tenacity,defense,protection,,,protection,,
+R2D2,0,0,speed,speed,potency,speed,critical damage,protection,speed,potency,health
+Commander Luke,0,0,speed,speed,health,speed,protection,critical damage,speed,potency,critical chance
+Raid Han,0,0,crit damage,crit damage,crit chance,speed,critical damage,protection,speed,critical chance,health
+Baze,0,0,health,health,health,speed,protection,,health,speed,
+Chirrut,0,0,crit damage,crit damage,crit chance,speed,critical damage,,speed,critical chance,health
+Starck,0,0,speed,speed,potency,speed,potency,,speed,potency,
+Shoretrooper,5,0,health,health,health,speed,protection,health,protection,health,speed
+Veers,0,0,speed,speed,potency,speed,potency,,speed,potency,
+Snowtrooper,0,0,offense,offense,crit chance,speed,critical damage,,speed,,
+Deathtrooper,5,0,health,crit damage,crit damage,speed,critical damage,,speed,,
+JTR,0,0,crit damage,crit damage,crit chance,speed,critical damage,protection,speed,health,protection
+Thrawn,5,0,health,tenacity,crit chance,speed,protection,,speed,,
+BB8,0,0,health,defense,defense,speed,protection,tenacity,speed,health,tenacity
+Vader,5,0,crit damage,crit damage,health,speed,critical damage,protection,speed,critical chance,
+Scavenger Rey,0,0,crit damage,crit damage,crit chance,speed,critical damage,,speed,,
+Resistance Trooper,0,0,potency,potency,potency,speed,potency,critical damage,speed,potency,
+Palpatine,0,0,speed,speed,health,speed,potency,,speed,potency,
+Nihilus,0,0,defense,health,potency,speed,,,speed,,
+Wedge,5,0,crit damage,crit damage,health,speed,critical damage,,speed,critical chance,
+Biggs,5,0,defense,crit damage,crit damage,speed,critical damage,,speed,critical chance,
+Asajj,0,0,health,tenacity,defense,speed,critical damage,,speed,,
+Lando,0,0,health,tenacity,defense,speed,critical damage,tenacity,speed,tenacity,
+Ackbar,5,0,health,tenacity,defense,speed,tenacity,,speed,tenacity,
+Finn,0,0,potency,potency,defense,speed,,,speed,,
+Poe,5,0,potency,tenacity,health,speed,,,speed,,
+Tarkin,5,0,potency,defense,health,speed,,,speed,,

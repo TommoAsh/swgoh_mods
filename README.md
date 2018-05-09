@@ -37,12 +37,12 @@ Yes, this part is tedious.
 ## Character demands
 Note that the mod magician optimises mods for the character in the first row, then the second with whatever is left, then the third with whatever is left after that etc., so put your higher priority characters higher up.  
 `example_character_demands.csv` gives you somehting to get started with, but here's a breakdown of the columns:  
-name: call them whatever you want, this is what will get put in the `new_toon` column of the mod_magician output. Doesn't have to correspond to anything in particular - it's just a label.  
-minpip: if there is a minimum number of pips / dots you want mods on this character to have, specify here. If you don't care, put 0. The mod magician will get mods of this minimum pip level if possible, but will use lower pip mods if the other demands make that impossible.  
-minlevel: if there is a minimum level you want mods on this character to have, specify here. If you don't care, put 0. The mod magician will get mods of this minimum level if possible, but will use lower level mods if the other demands make that impossible.  
-modset*: which modsets you want.  for every entry here the mod magician will get two mods of the chosen set if possible (if not it will substitute alternatives). Note that for critical damage, to make a full set you need 4 mods, so will need to have critical damage twice here.  
-primary*: the mod magician will try to get mods with your chosen primaries (with priority corresponding to the order you put them), but with lowish priority.  
-secondary*: the mod magician will optimise its mod selection based on the secondaries you put here, with more emphasis on the first choice than the second etc.  
+**name:** call them whatever you want, this is what will get put in the `new_toon` column of the mod_magician output. Doesn't have to correspond to anything in particular - it's just a label.  
+**minpip:** if there is a minimum number of pips / dots you want mods on this character to have, specify here. If you don't care, put 0. The mod magician will get mods of this minimum pip level if possible, but will use lower pip mods if the other demands make that impossible.  
+**minlevel:** if there is a minimum level you want mods on this character to have, specify here. If you don't care, put 0. The mod magician will get mods of this minimum level if possible, but will use lower level mods if the other demands make that impossible.  
+**modset*:** which modsets you want.  for every entry here the mod magician will get two mods of the chosen set if possible (if not it will substitute alternatives). Note that for critical damage, to make a full set you need 4 mods, so will need to have critical damage twice here.  
+**primary*:** the mod magician will try to get mods with your chosen primaries (with priority corresponding to the order you put them), but with lowish priority.  
+**secondary*:** the mod magician will optimise its mod selection based on the secondaries you put here, with more emphasis on the first choice than the second etc.  
 
 ## recommended use
 The way I use the mod magician is to put a few character demands in, see what it gets and iterate a bit.  
